@@ -1,0 +1,9 @@
+FiveM Backdoor Scanner rules
+Copyright 2026 RPScripts (https://rpscripts.net)
+
+This product includes software developed by RPScripts.
+Web version: https://rpscripts.net/tools/fivem-backdoor-scanner/
+
+Third-party components:
+- luaparse (MIT License), https://github.com/fstirlitz/luaparse
+- fflate (MIT License), https://github.com/101arrowz/fflate
