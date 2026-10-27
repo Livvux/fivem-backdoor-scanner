@@ -1,0 +1,8 @@
+{
+  "sec-101-http-load.lua": ["LAB-SEC-101"],
+  "sec-102-decoded-load.lua": ["LAB-SEC-102"],
+  "sec-104-license-key.lua": ["LAB-SEC-104"],
+  "sec-105-raw-ip.lua": ["LAB-SEC-105"],
+  "sec-106-spread.lua": ["LAB-SEC-106"],
+  "sec-107-hidden-after-spaces.lua": ["LAB-SEC-107"]
+}

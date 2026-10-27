@@ -1,0 +1,56 @@
+{
+  "name": "fivem-backdoor-scanner",
+  "version": "0.1.0",
+  "description": "Static checks for known FiveM/RedM backdoor patterns (rules of rpscripts.net/tools/fivem-backdoor-scanner)",
+  "license": "Apache-2.0",
+  "type": "module",
+  "bin": {
+    "fivem-backdoor-scan": "cli/index.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "cli",
+    "rules"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "fflate": "^0.8.2",
+    "luaparse": "^0.3.1"
+  },
+  "devDependencies": {
+    "@types/luaparse": "^0.2.13",
+    "@types/node": "^22",
+    "typescript": "^5",
+    "vitest": "^3"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Livvux/fivem-backdoor-scanner.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Livvux/fivem-backdoor-scanner/issues"
+  },
+  "homepage": "https://rpscripts.net/tools/fivem-backdoor-scanner/",
+  "keywords": [
+    "fivem",
+    "redm",
+    "backdoor",
+    "scanner",
+    "lua",
+    "security"
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "rulesetVersion": "2026.10.6",
+  "rules": {
+    "LAB-SEC-101": {
+      "severity": "warning",
+      "confidence": "heuristic",
+      "method": "pattern",
+      "title": "Possible backdoor: runs code downloaded over HTTP",
+      "fix": "Code from a web response should never reach load(); this is how known FiveM backdoors take over a server. Remove it unless you wrote it and trust the server it calls.",
+      "refs": [
+        {
+          "label": "Secure your events (docs.fivem.net)",
+          "url": "https://docs.fivem.net/docs/developers/server-security/"
+        }
+      ]
+    },
+    "LAB-SEC-102": {
+      "severity": "warning",
+      "confidence": "heuristic",
+      "method": "pattern",
+      "title": "Runs code built from encoded or obfuscated text",
+      "fix": "Find out what the decoded text does before starting the resource; ship readable source (or Cfx escrow) instead of hidden code.",
+      "refs": [
+        {
+          "label": "Secure your events (docs.fivem.net)",
+          "url": "https://docs.fivem.net/docs/developers/server-security/"
+        }
+      ]
+    },
+    "LAB-SEC-103": {
+      "severity": "warning",
+      "confidence": "heuristic",
+      "method": "pattern",
+      "title": "Obfuscated data in the code",
+      "fix": "Long escaped-byte, base64 or hex strings and long string.char lists hide what the code does. Check what they decode to.",
+      "refs": []
+    },
+    "LAB-SEC-104": {
+      "severity": "warning",
+      "confidence": "heuristic",
+      "method": "pattern",
+      "title": "Reads a server secret",
+      "fix": "A resource has no reason to read the license key or RCON password; database credentials only belong in the database resource. Find out where the value goes.",
+      "refs": [
+        {
+          "label": "Secure your events (docs.fivem.net)",
+          "url": "https://docs.fivem.net/docs/developers/server-security/"
+        }
+      ]
+    },
+    "LAB-SEC-105": {
+      "severity": "warning",
+      "confidence": "heuristic",
+      "method": "pattern",
+      "title": "HTTP request to a raw IP or a hidden address",
+      "fix": "Legitimate integrations call named, documented hosts. Find out who runs the address and what is sent there.",
+      "refs": []
+    },
+    "LAB-SEC-106": {
+      "severity": "warning",
+      "confidence": "heuristic",
+      "method": "pattern",
+      "title": "Runs shell commands or writes outside its own resource",
+      "fix": "os.execute and io.popen run programs on the host; writing other resources' files is how backdoors spread. Keep file writes inside GetResourcePath(GetCurrentResourceName()).",
+      "refs": [
+        {
+          "label": "Scripting in Lua (docs.fivem.net)",
+          "url": "https://docs.fivem.net/docs/scripting-manual/runtimes/lua/"
+        }
+      ]
+    },
+    "LAB-SEC-107": {
+      "severity": "error",
+      "confidence": "confirmed",
+      "method": "pattern",
+      "title": "Code hidden behind a long run of spaces",
+      "fix": "Legitimate code is never pushed out of view. This is how a known FiveM backdoor hides a loader that runs remote code on player clients: delete the hidden part and treat the package as compromised.",
+      "refs": [
+        {
+          "label": "Secure your events (docs.fivem.net)",
+          "url": "https://docs.fivem.net/docs/developers/server-security/"
+        }
+      ]
+    },
+    "LAB-PKG-004": {
+      "severity": "warning",
+      "confidence": "heuristic",
+      "method": "package",
+      "title": "Executable or system script in the package",
+      "fix": "FXServer never needs .exe, .dll, .bat, .cmd, .ps1, .sh, .vbs, .jar or .scr files to run a resource. A C# resource (one that contains a *.net.dll) may ship .dll assemblies; those are not flagged. Don't run the others; ask the author why they are included.",
+      "refs": []
+    },
+    "LAB-PKG-005": {
+      "severity": "warning",
+      "confidence": "confirmed",
+      "method": "package",
+      "title": "Archive entry with an unsafe path",
+      "fix": "Entries with '..', absolute paths or drive letters can write outside the folder they are extracted to. They were skipped; extract the archive with a tool that refuses them.",
+      "refs": []
+    }
+  }
+}
